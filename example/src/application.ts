@@ -1,42 +1,77 @@
-import {BootMixin} from '@loopback/boot';
-import {ApplicationConfig} from '@loopback/core';
+import * as path from 'path';
+import { ApplicationConfig } from '@loopback/core';
+import { BootMixin } from '@loopback/boot';
+import { RepositoryMixin } from '@loopback/repository';
+import { RestApplication } from '@loopback/rest';
+import { ServiceMixin } from '@loopback/service-proxy';
 import {
   RestExplorerBindings,
-  RestExplorerComponent,
+  RestExplorerComponent
 } from '@loopback/rest-explorer';
-import {RepositoryMixin} from '@loopback/repository';
-import {RestApplication} from '@loopback/rest';
-import {ServiceMixin} from '@loopback/service-proxy';
-import * as path from 'path';
-import {MySequence} from './sequence';
+import * as pkg from '../package.json';
+import { MySequence } from './sequence';
 
 export class Lb4KeycloakApplication extends BootMixin(
-  ServiceMixin(RepositoryMixin(RestApplication)),
+  ServiceMixin(RepositoryMixin(RestApplication))
 ) {
+  bootOptions = {
+    controllers: {
+      dirs: ['controllers'],
+      extensions: ['.controller.js'],
+      nested: true
+    }
+  };
+
   constructor(options: ApplicationConfig = {}) {
     super(options);
+    this.addComponents();
+    this.addBindings();
+    this.addSequences();
+    this.addHome();
+    this.addExplorer();
+    this.api({
+      openapi: '3.0.0',
+      info: {
+        title: pkg.name,
+        version: pkg.version
+      },
+      paths: {},
+      components: {
+        securitySchemes: {
+          basicAuth: {
+            scheme: 'basic',
+            type: 'http'
+          },
+          bearerAuth: {
+            scheme: 'bearer',
+            type: 'http'
+          }
+        }
+      }
+    });
+  }
 
-    // Set up the custom sequence
+  addComponents() {
+    return null;
+  }
+
+  addBindings() {
+    return null;
+  }
+
+  addSequences() {
     this.sequence(MySequence);
+  }
 
-    // Set up default home page
-    this.static('/', path.join(__dirname, '../public'));
+  addHome() {
+    this.projectRoot = __dirname;
+    this.static('/', path.join(__dirname, 'public'));
+  }
 
-    // Customize @loopback/rest-explorer configuration here
+  addExplorer() {
     this.bind(RestExplorerBindings.CONFIG).to({
-      path: '/explorer',
+      path: '/explorer'
     });
     this.component(RestExplorerComponent);
-
-    this.projectRoot = __dirname;
-    // Customize @loopback/boot Booter Conventions here
-    this.bootOptions = {
-      controllers: {
-        // Customize ControllerBooter Conventions here
-        dirs: ['controllers'],
-        extensions: ['.controller.js'],
-        nested: true,
-      },
-    };
   }
 }

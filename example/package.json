@@ -1,51 +1,37 @@
 {
   "name": "lb4-keycloak",
-  "version": "1.0.0",
-  "description": "keycloak adapter for loobpack 4",
-  "keywords": [
-    "loopback-application",
-    "loopback"
+  "version": "0.0.1",
+  "description": "keycloak adapter for loopback 4",
+  "homepage": "https://github.com/codejamninja/lb4-keycloak",
+  "bugs": {
+    "url": "https://github.com/codejamninja/lb4-keycloak/issues",
+    "email": "jam@codejam.ninja"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Jam Risser",
+    "email": "jam@codejam.ninja",
+    "url": "https://codejam.ninja"
+  },
+  "files": [
+    "dist"
   ],
-  "main": "index.js",
-  "engines": {
-    "node": ">=8.9"
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codejamninja/lb4-keycloak"
   },
   "scripts": {
-    "build:apidocs": "lb-apidocs",
-    "build": "lb-tsc es2017 --outDir dist",
-    "build:watch": "lb-tsc --watch",
-    "clean": "lb-clean dist",
-    "lint": "npm run prettier:check && npm run eslint",
-    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
-    "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
-    "prettier:check": "npm run prettier:cli -- -l",
-    "prettier:fix": "npm run prettier:cli -- --write",
-    "eslint": "lb-eslint --report-unused-disable-directives .",
-    "eslint:fix": "npm run eslint -- --fix",
-    "pretest": "npm run clean && npm run build",
-    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
-    "posttest": "npm run lint",
-    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
-    "docker:build": "docker build -t lb4-keycloak .",
-    "docker:run": "docker run -p 3000:3000 -d lb4-keycloak",
-    "migrate": "node ./dist/migrate",
-    "prestart": "npm run build",
-    "start": "node .",
-    "prepublishOnly": "npm run test"
+    "build": "npm run test && lb-tsc --outDir dist && cp -r src/public dist/src/public && tsc -d --emitDeclarationOnly",
+    "clean": "git clean -fXd -e \\!node_modules -e \\!node_modules/**/*",
+    "clean:purge": "git clean -fXd",
+    "format": "prettier --write ./**/*.{json,md,scss,yaml,yml,js,jsx,ts,tsx}",
+    "lint": "npm run format && tsc --allowJs --noEmit && eslint --ext .ts,.tsx ./",
+    "lint:fix": "npm run format && tsc --noEmit && eslint --ext .ts,.tsx --fix ./",
+    "prepublish": "npm run build",
+    "start": "nodemon",
+    "test": "npm run lint"
   },
-  "repository": {
-    "type": "git"
-  },
-  "author": "",
-  "license": "",
-  "files": [
-    "README.md",
-    "index.js",
-    "index.d.ts",
-    "dist",
-    "src",
-    "!*/__tests__"
-  ],
   "dependencies": {
     "@loopback/boot": "^1.3.0",
     "@loopback/context": "^1.18.0",
@@ -57,16 +43,26 @@
     "@loopback/service-proxy": "^1.2.0"
   },
   "devDependencies": {
-    "@loopback/build": "^1.7.0",
-    "@loopback/testlab": "^1.4.0",
-    "@types/node": "^10.11.2",
-    "@typescript-eslint/parser": "^1.9.0",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@loopback/build": "^1.7.1",
+    "@types/node": "^12.0.6",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
-    "@loopback/eslint-config": "^1.1.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "babel-preset-jam": "^0.2.0",
     "eslint": "^5.16.0",
-    "eslint-config-prettier": "",
-    "eslint-plugin-eslint-plugin": "^2.1.0",
-    "eslint-plugin-mocha": "^5.3.0",
-    "typescript": "~3.5.1"
-  }
+    "eslint-config-airbnb-typescript": "^4.0.0",
+    "eslint-config-jam": "^0.2.10",
+    "nodemon": "^1.19.1",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.5.1"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "eslintIgnore": [
+    "dist"
+  ]
 }

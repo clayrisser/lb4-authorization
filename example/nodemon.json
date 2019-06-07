@@ -1,0 +1,6 @@
+{
+  "watch": ["src"],
+  "ext": "ts",
+  "ignore": ["src/**/*.spec.ts"],
+  "exec": "lb-tsc --outDir dist && cp -r src/public dist/src/public && node dist"
+}
