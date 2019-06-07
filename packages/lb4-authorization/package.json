@@ -1,6 +1,6 @@
 {
   "name": "lb4-authorization",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "authorization adapter for loopback 4",
   "keywords": [
     "auth",
