@@ -23,7 +23,7 @@
     "url": "https://github.com/codejamninja/lb4-authorization"
   },
   "scripts": {
-    "build": "npm run test && lb-tsc --outDir dist && cp -r src/public dist/src/public",
+    "build": "npm run test && lb-tsc --outDir dist && cp -r src/public dist/src",
     "clean": "git clean -fXd -e \\!node_modules -e \\!node_modules/**/*",
     "clean:purge": "git clean -fXd",
     "format": "prettier --write ./**/*.{json,md,scss,yaml,yml,js,jsx,ts,tsx} --ignore-path .gitignore",
