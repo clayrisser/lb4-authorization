@@ -1,5 +1,5 @@
 import { inject } from '@loopback/context';
-import { AUTHORIZATION_SERVICE, AuthorizationService } from 'lb4-authorization';
+import { AuthorizationBindings, AuthorizeAction } from 'lb4-authorization';
 import {
   FindRoute,
   InvokeMethod,
@@ -20,15 +20,15 @@ export class MySequence implements SequenceHandler {
     @inject(SequenceActions.INVOKE_METHOD) protected invoke: InvokeMethod,
     @inject(SequenceActions.SEND) public send: Send,
     @inject(SequenceActions.REJECT) public reject: Reject,
-    @inject(AUTHORIZATION_SERVICE)
-    public authorizationService: AuthorizationService
+    @inject(AuthorizationBindings.Actions.AUTHORIZE)
+    public authorize: AuthorizeAction
   ) {}
 
   async handle(context: RequestContext) {
     try {
       const { request, response } = context;
       const route = this.findRoute(request);
-      await this.authorizationService.isAuthorized(request);
+      await this.authorize(request);
       const args = await this.parseParams(request, route);
       const result = await this.invoke(route, args);
       this.send(response, result);

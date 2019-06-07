@@ -11,11 +11,12 @@
     "clean": "lerna clean -y",
     "clean:purge": "git clean -fXd",
     "format": "lerna run format",
-    "test": "lerna run test",
     "lerna": "lerna",
     "link": "lerna link",
     "ls": "lerna ls",
-    "publish": "lerna publish"
+    "publish": "lerna publish",
+    "start": "cd example && npm run start",
+    "test": "lerna run test"
   },
   "devDependencies": {
     "lerna": "^3.14.1"

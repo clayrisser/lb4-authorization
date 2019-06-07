@@ -3,17 +3,11 @@ import {
   Constructor,
   MethodDecoratorFactory
 } from '@loopback/context';
-import { MetadataAccessor } from '@loopback/metadata';
-import { RolesMetadata } from '../types';
-
-export const ROLES_METADATA_ACCESSOR = MetadataAccessor.create<
-  RolesMetadata,
-  MethodDecorator
->('roles.roles-metadata-accesssor');
+import { RolesMetadata, AuthorizationBindings } from '../types';
 
 export function roles(...roleNames: string[]) {
   return MethodDecoratorFactory.createDecorator<RolesMetadata>(
-    ROLES_METADATA_ACCESSOR,
+    AuthorizationBindings.Accessors.ROLES_METADATA,
     { roleNames }
   );
 }
@@ -23,7 +17,7 @@ export function getRolesMetadata(
   methodName: string
 ): RolesMetadata | undefined {
   return MetadataInspector.getMethodMetadata<RolesMetadata>(
-    ROLES_METADATA_ACCESSOR,
+    AuthorizationBindings.Accessors.ROLES_METADATA,
     controllerClass.prototype,
     methodName
   );

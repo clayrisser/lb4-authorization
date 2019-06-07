@@ -5,9 +5,9 @@ import { RepositoryMixin } from '@loopback/repository';
 import { RestApplication } from '@loopback/rest';
 import { ServiceMixin } from '@loopback/service-proxy';
 import {
-  AUTHORIZATION_SERVICE,
+  AuthorizationBindings,
   AuthorizationComponent,
-  KeycloakAuthorizationServiceProvider
+  KeycloakAuthorizeActionProvider
 } from 'lb4-authorization';
 import {
   RestExplorerBindings,
@@ -61,8 +61,8 @@ export class Lb4AuthorizationApplication extends BootMixin(
   }
 
   addBindings() {
-    this.bind(AUTHORIZATION_SERVICE).toProvider(
-      KeycloakAuthorizationServiceProvider
+    this.bind(AuthorizationBindings.Actions.AUTHORIZE).toProvider(
+      KeycloakAuthorizeActionProvider
     );
   }
 
