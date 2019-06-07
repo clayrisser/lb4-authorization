@@ -47,18 +47,24 @@
     "start": "babel-node src --extensions \".ts,.tsx\"",
     "test": "npm run lint"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@loopback/context": "^1.19.0",
+    "@loopback/core": "^1.8.1",
+    "@loopback/metadata": "^1.2.1",
+    "@loopback/rest": "^1.15.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
     "@babel/preset-typescript": "^7.3.3",
+    "@types/node": "^12.0.7",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
     "babel-preset-jam": "^0.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-typescript": "^4.0.0",
-    "eslint-config-jam": "^0.2.9",
+    "eslint-config-jam": "^0.2.11",
     "tsc": "^1.20150623.0",
     "typescript": "^3.5.1"
   },
