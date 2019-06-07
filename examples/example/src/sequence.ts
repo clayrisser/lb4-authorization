@@ -1,4 +1,4 @@
-import { inject } from '@loopback/context';
+import { inject } from "@loopback/context";
 import {
   FindRoute,
   InvokeMethod,
@@ -8,7 +8,7 @@ import {
   RestBindings,
   Send,
   SequenceHandler
-} from '@loopback/rest';
+} from "@loopback/rest";
 
 const { SequenceActions } = RestBindings;
 

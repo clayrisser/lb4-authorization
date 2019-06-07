@@ -1,6 +1,6 @@
-import { ApplicationConfig } from '@loopback/core';
-import * as config from './config';
-import { Lb4KeycloakApplication } from './application';
+import { ApplicationConfig } from "@loopback/core";
+import * as config from "./config";
+import { Lb4KeycloakApplication } from "./application";
 
 const logger = console;
 
@@ -18,7 +18,7 @@ export { Lb4KeycloakApplication };
 
 if (require.main === module) {
   main(config).catch(err => {
-    logger.error('Cannot start the application.', err);
+    logger.error("Cannot start the application.", err);
     process.exit(1);
   });
 }

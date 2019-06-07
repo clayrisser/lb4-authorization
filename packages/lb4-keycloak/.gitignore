@@ -41,5 +41,6 @@ node_modules
 .idea/
 
 # application
+/lib
 package-lock.json
 yarn.lock

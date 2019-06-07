@@ -1,5 +1,6 @@
 {
-  "name": "lb4-keycloak",
+  "name": "example",
+  "private": true,
   "version": "0.0.1",
   "description": "keycloak adapter for loopback 4",
   "homepage": "https://github.com/codejamninja/lb4-keycloak",
@@ -40,7 +41,8 @@
     "@loopback/repository": "^1.6.0",
     "@loopback/rest": "^1.14.0",
     "@loopback/rest-explorer": "^1.2.0",
-    "@loopback/service-proxy": "^1.2.0"
+    "@loopback/service-proxy": "^1.2.0",
+    "lb4-keycloak": "^0.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
