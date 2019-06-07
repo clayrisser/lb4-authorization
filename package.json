@@ -9,6 +9,7 @@
     "bootstrap": "lerna bootstrap && npm run link",
     "bootstrap:hoist": "lerna bootstrap --hoist && npm run link",
     "clean": "lerna clean -y",
+    "clean:purge": "git clean -fXd",
     "lerna": "lerna",
     "link": "lerna link",
     "ls": "lerna ls",

@@ -42,7 +42,7 @@
     "@loopback/rest": "^1.15.0",
     "@loopback/rest-explorer": "^1.2.1",
     "@loopback/service-proxy": "^1.2.1",
-    "lb4-authorization": "0.0.6"
+    "lb4-authorization": "0.0.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
