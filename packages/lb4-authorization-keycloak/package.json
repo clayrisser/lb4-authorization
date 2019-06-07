@@ -1,8 +1,22 @@
 {
-  "name": "example",
-  "private": true,
+  "name": "lb4-authorization-keycloak",
   "version": "0.0.2",
   "description": "authorization adapter for loopback 4",
+  "keywords": [
+    "auth",
+    "authorization",
+    "introspection",
+    "keycloak",
+    "lb4",
+    "lb4-authorization",
+    "loopback",
+    "oauth",
+    "oauth",
+    "openid",
+    "saml",
+    "server",
+    "token"
+  ],
   "homepage": "https://github.com/codejamninja/lb4-authorization",
   "bugs": {
     "url": "https://github.com/codejamninja/lb4-authorization/issues",
@@ -15,35 +29,29 @@
     "url": "https://codejam.ninja"
   },
   "files": [
-    "dist"
+    "lib"
   ],
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/codejamninja/lb4-authorization"
   },
   "scripts": {
-    "build": "npm run test && lb-tsc --outDir dist && cp -r src/public dist/src/public",
+    "build": "npm run test && lb-tsc --outDir lib",
     "clean": "git clean -fXd -e \\!node_modules -e \\!node_modules/**/*",
     "clean:purge": "git clean -fXd",
     "format": "prettier --write ./**/*.{json,md,scss,yaml,yml,js,jsx,ts,tsx} --ignore-path .gitignore",
     "lint": "npm run format && tsc --allowJs --noEmit && eslint --ext .ts,.tsx ./",
     "lint:fix": "npm run format && tsc --noEmit && eslint --ext .ts,.tsx --fix ./",
     "prepublish": "npm run build",
-    "start": "nodemon",
+    "start": "babel-node src --extensions \".ts,.tsx\"",
     "test": "npm run lint"
   },
   "dependencies": {
-    "@loopback/boot": "^1.4.0",
     "@loopback/context": "^1.19.0",
     "@loopback/core": "^1.8.1",
-    "@loopback/openapi-v3": "^1.6.1",
-    "@loopback/repository": "^1.6.1",
     "@loopback/rest": "^1.15.0",
-    "@loopback/rest-explorer": "^1.2.1",
-    "@loopback/service-proxy": "^1.2.1",
-    "lb4-authorization": "^0.0.2",
-    "lb4-authorization-keycloak": "^0.0.2"
+    "lb4-authorization": "^0.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -58,7 +66,6 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-typescript": "^4.0.0",
     "eslint-config-jam": "^0.2.12",
-    "nodemon": "^1.19.1",
     "tsc": "^1.20150623.0",
     "typescript": "^3.5.1"
   },
@@ -66,6 +73,6 @@
     "node": ">=6.0.0"
   },
   "eslintIgnore": [
-    "dist"
+    "lib"
   ]
 }

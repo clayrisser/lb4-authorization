@@ -1,13 +1,13 @@
 import * as path from 'path';
 import { ApplicationConfig } from '@loopback/core';
 import { BootMixin } from '@loopback/boot';
+import { KeycloakAuthorizeActionProvider } from 'lb4-authorization-keycloak';
 import { RepositoryMixin } from '@loopback/repository';
 import { RestApplication } from '@loopback/rest';
 import { ServiceMixin } from '@loopback/service-proxy';
 import {
   AuthorizationBindings,
-  AuthorizationComponent,
-  KeycloakAuthorizeActionProvider
+  AuthorizationComponent
 } from 'lb4-authorization';
 import {
   RestExplorerBindings,

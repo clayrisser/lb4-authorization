@@ -4,7 +4,7 @@ import {
   AuthorizationBindings,
   AuthorizeAction,
   RolesMetadata
-} from '../types';
+} from 'lb4-authorization';
 
 export class KeycloakAuthorizeActionProvider
   implements Provider<AuthorizeAction> {
