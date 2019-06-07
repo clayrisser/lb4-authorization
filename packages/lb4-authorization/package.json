@@ -1,25 +1,25 @@
 {
-  "name": "lb4-keycloak",
-  "version": "0.0.6",
-  "description": "keycloak adapter for loopback 4",
+  "name": "lb4-authorization",
+  "version": "0.0.7",
+  "description": "authorization adapter for loopback 4",
   "keywords": [
-    "lb4-keycloak",
-    "loopback",
-    "lb4",
-    "4",
-    "keycloak",
-    "oauth",
-    "saml",
-    "token",
-    "introspection",
-    "oauth",
     "auth",
+    "authorization",
+    "introspection",
+    "keycloak",
+    "lb4",
+    "lb4-authorization",
+    "loopback",
+    "oauth",
+    "oauth",
     "openid",
-    "server"
+    "saml",
+    "server",
+    "token"
   ],
-  "homepage": "https://github.com/codejamninja/lb4-keycloak",
+  "homepage": "https://github.com/codejamninja/lb4-authorization",
   "bugs": {
-    "url": "https://github.com/codejamninja/lb4-keycloak/issues",
+    "url": "https://github.com/codejamninja/lb4-authorization/issues",
     "email": "jam@codejam.ninja"
   },
   "license": "MIT",
@@ -34,7 +34,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/codejamninja/lb4-keycloak"
+    "url": "https://github.com/codejamninja/lb4-authorization"
   },
   "scripts": {
     "build": "npm run test && lb-tsc --outDir lib",

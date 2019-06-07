@@ -15,7 +15,7 @@
     "publish": "lerna publish"
   },
   "devDependencies": {
-    "lerna": "^3.2.1"
+    "lerna": "^3.14.1"
   },
   "license": "MIT"
 }

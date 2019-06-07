@@ -64,3 +64,4 @@ api-docs/
 /dist*
 yarn.lock
 package-lock.json
+tsconfig.tsbuildinfo

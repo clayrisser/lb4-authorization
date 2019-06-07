@@ -1,5 +1,5 @@
 import { inject } from '@loopback/context';
-import { AUTHORIZATION_SERVICE, AuthorizationService } from 'lb4-keycloak';
+import { AUTHORIZATION_SERVICE, AuthorizationService } from 'lb4-authorization';
 import {
   FindRoute,
   InvokeMethod,

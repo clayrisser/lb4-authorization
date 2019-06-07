@@ -1,6 +1,6 @@
 import { Request, RestBindings, get, ResponseObject } from '@loopback/rest';
 import { inject } from '@loopback/context';
-import { roles } from 'lb4-keycloak';
+import { roles } from 'lb4-authorization';
 
 const PING_RESPONSE: ResponseObject = {
   description: 'Ping Response',

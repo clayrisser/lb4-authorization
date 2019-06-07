@@ -2,10 +2,10 @@
   "name": "example",
   "private": true,
   "version": "0.0.1",
-  "description": "keycloak adapter for loopback 4",
-  "homepage": "https://github.com/codejamninja/lb4-keycloak",
+  "description": "authorization adapter for loopback 4",
+  "homepage": "https://github.com/codejamninja/lb4-authorization",
   "bugs": {
-    "url": "https://github.com/codejamninja/lb4-keycloak/issues",
+    "url": "https://github.com/codejamninja/lb4-authorization/issues",
     "email": "jam@codejam.ninja"
   },
   "license": "MIT",
@@ -20,7 +20,7 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/codejamninja/lb4-keycloak"
+    "url": "https://github.com/codejamninja/lb4-authorization"
   },
   "scripts": {
     "build": "npm run test && lb-tsc --outDir dist && cp -r src/public dist/src/public",
@@ -35,14 +35,14 @@
   },
   "dependencies": {
     "@loopback/boot": "^1.4.0",
-    "@loopback/context": "1.19.0",
+    "@loopback/context": "^1.19.0",
     "@loopback/core": "^1.8.1",
     "@loopback/openapi-v3": "^1.6.1",
     "@loopback/repository": "^1.6.1",
     "@loopback/rest": "^1.15.0",
     "@loopback/rest-explorer": "^1.2.1",
     "@loopback/service-proxy": "^1.2.1",
-    "lb4-keycloak": "0.0.6"
+    "lb4-authorization": "0.0.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",

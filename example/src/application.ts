@@ -8,7 +8,7 @@ import {
   AUTHORIZATION_SERVICE,
   AuthorizationComponent,
   KeycloakAuthorizationServiceProvider
-} from 'lb4-keycloak';
+} from 'lb4-authorization';
 import {
   RestExplorerBindings,
   RestExplorerComponent
@@ -16,7 +16,7 @@ import {
 import * as pkg from '../package.json';
 import { MySequence } from './sequence';
 
-export class Lb4KeycloakApplication extends BootMixin(
+export class Lb4AuthorizationApplication extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication))
 ) {
   bootOptions = {

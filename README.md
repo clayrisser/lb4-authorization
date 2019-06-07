@@ -1,8 +1,8 @@
-# lb4-keycloak
+# lb4-authorization
 
-[![GitHub stars](https://img.shields.io/github/stars/codejamninja/lb4-keycloak.svg?style=social&label=Stars)](https://github.com/codejamninja/lb4-keycloak)
+[![GitHub stars](https://img.shields.io/github/stars/codejamninja/lb4-authorization.svg?style=social&label=Stars)](https://github.com/codejamninja/lb4-authorization)
 
-> keycloak adapter for loopback 4
+> authorization adapter for loopback 4
 
 Please ★ this repo if you found it useful ★ ★ ★
 
@@ -14,7 +14,7 @@ Please ★ this repo if you found it useful ★ ★ ★
 ## Installation
 
 ```sh
-npm install --save lb4-keycloak
+npm install --save lb4-authorization
 ```
 
 ## Dependencies
@@ -24,29 +24,29 @@ npm install --save lb4-keycloak
 
 ## Usage
 
-[Contribute](https://github.com/codejamninja/lb4-keycloak/blob/master/CONTRIBUTING.md) usage docs
+[Contribute](https://github.com/codejamninja/lb4-authorization/blob/master/CONTRIBUTING.md) usage docs
 
 ## Support
 
-Submit an [issue](https://github.com/codejamninja/lb4-keycloak/issues/new)
+Submit an [issue](https://github.com/codejamninja/lb4-authorization/issues/new)
 
 ## Screenshots
 
-[Contribute](https://github.com/codejamninja/lb4-keycloak/blob/master/CONTRIBUTING.md) a screenshot
+[Contribute](https://github.com/codejamninja/lb4-authorization/blob/master/CONTRIBUTING.md) a screenshot
 
 ## Contributing
 
-Review the [guidelines for contributing](https://github.com/codejamninja/lb4-keycloak/blob/master/CONTRIBUTING.md)
+Review the [guidelines for contributing](https://github.com/codejamninja/lb4-authorization/blob/master/CONTRIBUTING.md)
 
 ## License
 
-[MIT License](https://github.com/codejamninja/lb4-keycloak/blob/master/LICENSE)
+[MIT License](https://github.com/codejamninja/lb4-authorization/blob/master/LICENSE)
 
 [Jam Risser](https://codejam.ninja) © 2019
 
 ## Changelog
 
-Review the [changelog](https://github.com/codejamninja/lb4-keycloak/blob/master/CHANGELOG.md)
+Review the [changelog](https://github.com/codejamninja/lb4-authorization/blob/master/CHANGELOG.md)
 
 ## Credits
 

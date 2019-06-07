@@ -1,11 +1,11 @@
 import { ApplicationConfig } from '@loopback/core';
 import * as config from './config';
-import { Lb4KeycloakApplication } from './application';
+import { Lb4AuthorizationApplication } from './application';
 
 const logger = console;
 
 export async function main(options: ApplicationConfig = {}) {
-  const app = new Lb4KeycloakApplication(options);
+  const app = new Lb4AuthorizationApplication(options);
   await app.boot();
   await app.start();
   const { url } = app.restServer;
@@ -14,7 +14,7 @@ export async function main(options: ApplicationConfig = {}) {
   return app;
 }
 
-export { Lb4KeycloakApplication };
+export { Lb4AuthorizationApplication };
 
 if (require.main === module) {
   main(config).catch(err => {

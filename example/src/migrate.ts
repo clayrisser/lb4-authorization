@@ -1,11 +1,11 @@
-import { Lb4KeycloakApplication } from './application';
+import { Lb4AuthorizationApplication } from './application';
 
 const logger = console;
 
 export async function migrate(args: string[]) {
   const existingSchema = args.includes('--rebuild') ? 'drop' : 'alter';
   logger.log('Migrating schemas (%s existing schema)', existingSchema);
-  const app = new Lb4KeycloakApplication();
+  const app = new Lb4AuthorizationApplication();
   await app.boot();
   await app.migrateSchema({ existingSchema });
   process.exit(0);
