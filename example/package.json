@@ -1,7 +1,7 @@
 {
   "name": "example",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "authorization adapter for loopback 4",
   "homepage": "https://github.com/codejamninja/lb4-authorization",
   "bugs": {
@@ -42,7 +42,7 @@
     "@loopback/rest": "^1.15.0",
     "@loopback/rest-explorer": "^1.2.1",
     "@loopback/service-proxy": "^1.2.1",
-    "lb4-authorization": "0.0.7"
+    "lb4-authorization": "^0.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
