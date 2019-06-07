@@ -1,6 +1,6 @@
 {
   "name": "lb4-keycloak",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "keycloak adapter for loopback 4",
   "keywords": [
     "lb4-keycloak",
@@ -37,7 +37,7 @@
     "url": "https://github.com/codejamninja/lb4-keycloak"
   },
   "scripts": {
-    "build": "npm run test && babel src -d lib --extensions \".ts,.tsx\" --source-maps inline && tsc -d --emitDeclarationOnly",
+    "build": "npm run test && lb-tsc --outDir lib",
     "clean": "git clean -fXd -e \\!node_modules -e \\!node_modules/**/*",
     "clean:purge": "git clean -fXd",
     "format": "prettier --write ./**/*.{json,md,scss,yaml,yml,js,jsx,ts,tsx}",
@@ -58,13 +58,14 @@
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
     "@babel/preset-typescript": "^7.3.3",
+    "@loopback/build": "^1.7.1",
     "@types/node": "^12.0.7",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
     "babel-preset-jam": "^0.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-typescript": "^4.0.0",
-    "eslint-config-jam": "^0.2.11",
+    "eslint-config-jam": "^0.2.12",
     "tsc": "^1.20150623.0",
     "typescript": "^3.5.1"
   },
@@ -72,7 +73,6 @@
     "node": ">=6.0.0"
   },
   "eslintIgnore": [
-    "lib",
-    "example"
+    "lib"
   ]
 }

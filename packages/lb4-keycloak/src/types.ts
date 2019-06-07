@@ -1,13 +1,12 @@
 import { BindingKey } from '@loopback/context';
-import { MetadataAccessor } from '@loopback/metadata';
+import { AuthorizationService } from './services';
 
-export type RolesMetadata = string[];
+export type RolesMetadata = { roleNames: string[] };
 
 export const ROLES_METADATA = BindingKey.create<RolesMetadata | undefined>(
-  'roles.roles-metadata'
+  'authorization.metadata.roles'
 );
 
-export const ROLES_METADATA_ACCESSOR = MetadataAccessor.create<
-  RolesMetadata,
-  MethodDecorator
->('roles.roles-metadata-accesssor');
+export const AUTHORIZATION_SERVICE = BindingKey.create<AuthorizationService>(
+  'authorization.services.authorization'
+);

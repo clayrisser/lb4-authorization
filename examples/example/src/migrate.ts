@@ -1,10 +1,10 @@
-import { Lb4KeycloakApplication } from "./application";
+import { Lb4KeycloakApplication } from './application';
 
 const logger = console;
 
 export async function migrate(args: string[]) {
-  const existingSchema = args.includes("--rebuild") ? "drop" : "alter";
-  logger.log("Migrating schemas (%s existing schema)", existingSchema);
+  const existingSchema = args.includes('--rebuild') ? 'drop' : 'alter';
+  logger.log('Migrating schemas (%s existing schema)', existingSchema);
   const app = new Lb4KeycloakApplication();
   await app.boot();
   await app.migrateSchema({ existingSchema });
@@ -12,6 +12,6 @@ export async function migrate(args: string[]) {
 }
 
 migrate(process.argv).catch(err => {
-  logger.error("Cannot migrate database schema", err);
+  logger.error('Cannot migrate database schema', err);
   process.exit(1);
 });

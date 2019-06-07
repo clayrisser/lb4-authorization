@@ -1,2 +1,2 @@
-export * from './keycloak-authorize-service.provider';
+export * from './keycloak-authorization-service.provider';
 export * from './roles-metadata.provider';

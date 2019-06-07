@@ -1,4 +1,5 @@
-import { inject } from "@loopback/context";
+import { inject } from '@loopback/context';
+import { AUTHORIZATION_SERVICE, AuthorizationService } from 'lb4-keycloak';
 import {
   FindRoute,
   InvokeMethod,
@@ -8,7 +9,7 @@ import {
   RestBindings,
   Send,
   SequenceHandler
-} from "@loopback/rest";
+} from '@loopback/rest';
 
 const { SequenceActions } = RestBindings;
 
@@ -18,13 +19,16 @@ export class MySequence implements SequenceHandler {
     @inject(SequenceActions.PARSE_PARAMS) protected parseParams: ParseParams,
     @inject(SequenceActions.INVOKE_METHOD) protected invoke: InvokeMethod,
     @inject(SequenceActions.SEND) public send: Send,
-    @inject(SequenceActions.REJECT) public reject: Reject
+    @inject(SequenceActions.REJECT) public reject: Reject,
+    @inject(AUTHORIZATION_SERVICE)
+    public authorizationService: AuthorizationService
   ) {}
 
   async handle(context: RequestContext) {
     try {
       const { request, response } = context;
       const route = this.findRoute(request);
+      await this.authorizationService.isAuthorized(request);
       const args = await this.parseParams(request, route);
       const result = await this.invoke(route, args);
       this.send(response, result);

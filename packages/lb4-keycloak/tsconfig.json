@@ -1,15 +1,9 @@
 {
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "@loopback/build/config/tsconfig.common.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "module": "CommonJS",
-    "moduleResolution": "Node",
     "outDir": "lib",
-    "resolveJsonModule": true,
-    "strict": true,
-    "target": "ESNext"
+    "rootDir": "src"
   },
   "include": ["src"]
 }
