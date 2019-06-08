@@ -28,7 +28,7 @@ export class MySequence implements SequenceHandler {
     try {
       const { request, response } = context;
       const route = this.findRoute(request);
-      await this.authorize(request);
+      await this.authorize(context);
       const args = await this.parseParams(request, route);
       const result = await this.invoke(route, args);
       this.send(response, result);

@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "incremental": true,
-    "lib": ["ES2018", "ESNext.AsyncIterable"],
+    "lib": ["ES2019"],
     "module": "CommonJS",
     "moduleResolution": "Node",
     "outDir": "lib",
@@ -15,7 +15,7 @@
     "sourceMap": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "target": "ESNext"
+    "target": "ES5"
   },
   "include": ["src"],
   "exclude": ["node_modules/**", "**/*.d.ts"]
