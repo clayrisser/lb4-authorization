@@ -2,6 +2,7 @@ import Keycloak from 'keycloak-connect';
 import cookieSession from 'cookie-session';
 import { RequestContext, Request, Response } from '@loopback/rest';
 import { inject, Provider, Getter } from '@loopback/context';
+import { oc } from 'ts-optchain.macro';
 import {
   AuthorizationBindings,
   AuthorizeAction,
@@ -11,6 +12,14 @@ import MiddlewareRunner, {
   NextFunction,
   RequestHandler
 } from 'middleware-runner';
+import {
+  AccessToken,
+  AuthorizationKeycloakBindings,
+  KeycloakClientConfig,
+  KeycloakRequest,
+  KeycloakTokenContent,
+  User
+} from '../types';
 
 const { env } = process;
 
@@ -20,17 +29,46 @@ export class KeycloakAuthorizeActionProvider
 
   constructor(
     @inject.getter(AuthorizationBindings.Metadata.ROLES)
-    public getRolesMetadata: Getter<RolesMetadata>
+    public getRolesMetadata: Getter<RolesMetadata>,
+    @inject(AuthorizationKeycloakBindings.Config.KEYCLOAK_CLIENT_CONFIG, {
+      optional: true
+    })
+    public keycloakClientConfig?: KeycloakClientConfig
   ) {
-    this.keycloak = new Keycloak({}, {});
+    this.keycloak = new Keycloak({}, keycloakClientConfig || {});
   }
 
   value(): AuthorizeAction {
     return (context: RequestContext) => this.action(context);
   }
 
-  userMiddleware(request: Request, response: Response, next: NextFunction) {
-    return next(request, response);
+  userMiddleware(request: Request, _response: Response, next: NextFunction) {
+    const keycloakRequest = request as KeycloakRequest;
+    const accessToken: AccessToken | null = oc(
+      keycloakRequest
+    ).kauth.grant.access_token(null);
+    if (!accessToken) {
+      throw Error(
+        `No access token provided in grant. Grant:" ${JSON.stringify(
+          oc(keycloakRequest).kauth.grant({ access_token: { content: null } })
+        )}`
+      );
+    }
+    const tokenContent: KeycloakTokenContent = accessToken.content as KeycloakTokenContent;
+    if (!tokenContent) {
+      throw Error(
+        `No content provided in access token. Access token:" ${JSON.stringify(
+          accessToken
+        )}`
+      );
+    }
+    const user: User = {
+      email: tokenContent.email,
+      id: tokenContent.sub,
+      name: `${tokenContent.given_name} ${tokenContent.family_name}`,
+      teams: tokenContent.groups
+    };
+    return next(null, user);
   }
 
   async action(context: RequestContext): Promise<boolean> {
@@ -56,18 +94,4 @@ export class KeycloakAuthorizeActionProvider
     console.log('rolesMetadata', rolesMetadata);
     return !!rolesMetadata && !!context;
   }
-}
-
-export interface Credentials {
-  secret: string;
-}
-
-export interface KeycloakClientConfig {
-  realm: string;
-  'auth-server-url': string;
-  'ssl-required': string;
-  resource: string;
-  credentials?: Credentials;
-  'use-resource-role-mappings': boolean;
-  'confidential-port': number;
 }

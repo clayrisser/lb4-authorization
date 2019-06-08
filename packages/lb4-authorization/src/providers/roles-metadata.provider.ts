@@ -7,9 +7,9 @@ export class RolesMetadataProvider
   implements Provider<RolesMetadata | undefined> {
   constructor(
     @inject(CoreBindings.CONTROLLER_CLASS, { optional: true })
-    private readonly controllerClass: Constructor<{}>,
+    private readonly controllerClass?: Constructor<{}>,
     @inject(CoreBindings.CONTROLLER_METHOD_NAME, { optional: true })
-    private readonly methodName: string
+    private readonly methodName?: string
   ) {}
 
   value(): RolesMetadata | undefined {
