@@ -1,6 +1,6 @@
 {
   "name": "lb4-authorization-keycloak",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "description": "authorization adapter for loopback 4",
   "keywords": [
     "auth",
