@@ -1,7 +1,7 @@
 {
   "name": "example",
   "private": true,
-  "version": "0.0.12",
+  "version": "0.0.15",
   "description": "authorization adapter for loopback 4",
   "homepage": "https://github.com/codejamninja/lb4-authorization",
   "bugs": {
