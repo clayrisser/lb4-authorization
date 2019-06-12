@@ -1,6 +1,7 @@
 import Keycloak from 'keycloak-connect';
 import { BindingKey } from '@loopback/context';
 import { Request } from '@loopback/rest';
+import { User as AuthorizationUser } from 'lb4-authorization';
 
 export namespace AuthorizationKeycloakBindings {
   export namespace Providers {
@@ -43,7 +44,7 @@ export interface KeycloakTokenContent extends Keycloak.TokenContent {
   sub: string;
 }
 
-export interface User {
+export interface User extends AuthorizationUser {
   id: string;
   name?: string;
   email?: string;

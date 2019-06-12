@@ -21,8 +21,5 @@
   "devDependencies": {
     "lerna": "^3.14.1"
   },
-  "license": "MIT",
-  "dependencies": {
-    "ts-optchain": "^0.1.7"
-  }
+  "license": "MIT"
 }
