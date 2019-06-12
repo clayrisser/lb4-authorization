@@ -13,14 +13,12 @@ export namespace AuthorizationBindings {
       MethodDecorator
     >('lb4-authorization.accessors.roles-metadata');
   }
-  export namespace Metadata {
-    export const ROLES = BindingKey.create<RolesMetadata | undefined>(
-      'lb4-authorization.metadata.roles'
+  export namespace Providers {
+    export const ROLES_METADATA = BindingKey.create<RolesMetadata | undefined>(
+      'lb4-authorization.providers.roles-metadata'
     );
-  }
-  export namespace Actions {
-    export const AUTHORIZE = BindingKey.create<AuthorizeAction>(
-      'lb4-authorization.actions.authorize'
+    export const AUTHORIZE_ACTION = BindingKey.create<AuthorizeAction>(
+      'lb4-authorization.providers.authorize-action'
     );
   }
 }

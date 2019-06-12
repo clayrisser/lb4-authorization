@@ -7,7 +7,8 @@ export class AuthorizationComponent implements Component {
 
   constructor() {
     this.providers = {
-      [AuthorizationBindings.Metadata.ROLES.key]: RolesMetadataProvider
+      [AuthorizationBindings.Providers.ROLES_METADATA
+        .key]: RolesMetadataProvider
     };
   }
 }

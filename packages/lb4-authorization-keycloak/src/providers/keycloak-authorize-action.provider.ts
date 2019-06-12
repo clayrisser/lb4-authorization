@@ -1,17 +1,14 @@
 import Keycloak from 'keycloak-connect';
 import cookieSession from 'cookie-session';
+import { NextFunction, RequestHandler, runMiddleware } from 'middleware-runner';
 import { RequestContext, Request, Response } from '@loopback/rest';
 import { inject, Provider, Getter } from '@loopback/context';
-import { oc } from 'ts-optchain.macro';
+import { oc } from 'ts-optchain';
 import {
   AuthorizationBindings,
   AuthorizeAction,
   RolesMetadata
 } from 'lb4-authorization';
-import MiddlewareRunner, {
-  NextFunction,
-  RequestHandler
-} from 'middleware-runner';
 import {
   AccessToken,
   AuthorizationKeycloakBindings,
@@ -30,7 +27,7 @@ export class KeycloakAuthorizeActionProvider
   constructor(
     @inject.getter(AuthorizationBindings.Metadata.ROLES)
     public getRolesMetadata: Getter<RolesMetadata>,
-    @inject(AuthorizationKeycloakBindings.Config.KEYCLOAK_CLIENT_CONFIG, {
+    @inject(AuthorizationKeycloakBindings.Providers.KEYCLOAK_CLIENT_CONFIG, {
       optional: true
     })
     public keycloakClientConfig?: KeycloakClientConfig
@@ -74,9 +71,9 @@ export class KeycloakAuthorizeActionProvider
   async action(context: RequestContext): Promise<boolean> {
     const { request, response } = context;
     const rolesMetadata = await this.getRolesMetadata();
-    const middlewareRunner = new MiddlewareRunner([
+    const user = await runMiddleware<User>(request, response, [
       cookieSession({
-        secret: env.COOKIE_SECRET,
+        secret: env.COOKIE_SECRET || 'some-secret',
         name: 'keycloak_grant',
         path: '/',
         httpOnly: true,
@@ -89,9 +86,6 @@ export class KeycloakAuthorizeActionProvider
       this.keycloak.protect(),
       this.userMiddleware
     ]);
-    const result = await middlewareRunner.run(request, response);
-    console.log('result', result);
-    console.log('rolesMetadata', rolesMetadata);
-    return !!rolesMetadata && !!context;
+    return !!user.id;
   }
 }

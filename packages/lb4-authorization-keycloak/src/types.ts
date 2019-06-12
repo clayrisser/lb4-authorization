@@ -3,10 +3,10 @@ import { BindingKey } from '@loopback/context';
 import { Request } from '@loopback/rest';
 
 export namespace AuthorizationKeycloakBindings {
-  export namespace Config {
+  export namespace Providers {
     export const KEYCLOAK_CLIENT_CONFIG = BindingKey.create<
       KeycloakClientConfig
-    >('lb4-keycloak-authorization.config.keycloak-client-config');
+    >('lb4-keycloak-authorization.providers.keycloak-client-config');
   }
 }
 
