@@ -28,7 +28,7 @@ const PING_RESPONSE: ResponseObject = {
 export class PingController {
   constructor(@inject(RestBindings.Http.REQUEST) private req: Request) {}
 
-  @roles('admin')
+  @roles('realm:loopback')
   @get('/ping', {
     responses: {
       '200': PING_RESPONSE

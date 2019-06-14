@@ -30,7 +30,7 @@
     "lint": "npm run format && tsc --allowJs --noEmit && eslint --ext .ts,.tsx ./",
     "lint:fix": "npm run format && tsc --noEmit && eslint --ext .ts,.tsx --fix ./",
     "prepublish": "npm run build",
-    "start": "nodemon",
+    "start": "npm run build && node dist",
     "test": "npm run lint"
   },
   "dependencies": {
@@ -43,8 +43,8 @@
     "@loopback/rest-explorer": "^1.2.1",
     "@loopback/service-proxy": "^1.2.1",
     "core-js": "^3.1.3",
-    "lb4-authorization": "^0.0.12",
-    "lb4-authorization-keycloak": "^0.0.12",
+    "lb4-authorization": "^0.0.15",
+    "lb4-authorization-keycloak": "^0.0.15",
     "lb4-middleware": "^0.0.6"
   },
   "devDependencies": {

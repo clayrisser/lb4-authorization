@@ -1,6 +1,15 @@
 {
-  "watch": ["src"],
+  "watch": [
+    "../packages/lb4-authorization/src/**/*.ts",
+    "../packages/lb4-authorization/src/**/*.ts",
+    "src/**/*.ts"
+  ],
   "ext": "ts",
-  "ignore": ["src/**/*.spec.ts", "dist/**/*", ".#*"],
+  "ignore": [
+    "**/*.spec.ts",
+    "**/\\.#*",
+    "**/flycheck_*.ts",
+    "node_modules/**/*"
+  ],
   "exec": "lb-tsc --outDir dist && cp -r src/public dist/src && node dist"
 }

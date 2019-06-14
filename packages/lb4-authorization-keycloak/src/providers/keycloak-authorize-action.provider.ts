@@ -64,6 +64,7 @@ export class KeycloakAuthorizeActionProvider
   async action(context: RequestContext): Promise<boolean> {
     const { request, response } = context;
     const rolesMetadata = await this.getRolesMetadata();
+    if (!oc(rolesMetadata).roleNames([]).length) return true;
     const user = await runMiddleware<User>(request, response, [
       this.cookieMiddleware,
       this.keycloakMiddleware,

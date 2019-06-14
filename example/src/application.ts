@@ -1,7 +1,10 @@
 import * as path from 'path';
 import { ApplicationConfig } from '@loopback/core';
 import { AuthorizationComponent } from 'lb4-authorization';
-import { AuthorizationKeycloakComponent } from 'lb4-authorization-keycloak';
+import {
+  AuthorizationKeycloakComponent,
+  AuthorizationKeycloakBindings
+} from 'lb4-authorization-keycloak';
 import { BootMixin } from '@loopback/boot';
 import { RepositoryMixin } from '@loopback/repository';
 import { RestApplication } from '@loopback/rest';
@@ -11,6 +14,7 @@ import {
   RestExplorerComponent
 } from '@loopback/rest-explorer';
 import * as pkg from '../package.json';
+import { KeycloakClientConfigProvider } from './providers';
 import { MySequence } from './sequence';
 
 export class Lb4AuthorizationApplication extends BootMixin(
@@ -59,7 +63,9 @@ export class Lb4AuthorizationApplication extends BootMixin(
   }
 
   addBindings() {
-    return null;
+    this.bind(
+      AuthorizationKeycloakBindings.Providers.KEYCLOAK_CLIENT_CONFIG
+    ).toProvider(KeycloakClientConfigProvider);
   }
 
   addSequences() {

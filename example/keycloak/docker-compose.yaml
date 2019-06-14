@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  keycloak:
+    image: jboss/keycloak:latest
+    network_mode: host
+    volumes:
+      - ./realm-export.json:/realm-export.json
+    environment:
+      DB_ADDR: localhost
+      DB_DATABASE: postgres
+      DB_PASSWORD: postgres
+      DB_SCHEMA: public
+      DB_USER: postgres
+      DB_VENDOR: POSTGRES
+      KEYCLOAK_IMPORT: /realm-export.json
+      KEYCLOAK_PASSWORD: pass
+      KEYCLOAK_USER: admin
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    network_mode: host

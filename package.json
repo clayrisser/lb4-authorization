@@ -11,6 +11,7 @@
     "clean": "lerna clean -y",
     "clean:purge": "git clean -fXd",
     "format": "lerna run format",
+    "keycloak": "cd example/keycloak && docker-compose up",
     "lerna": "lerna",
     "link": "lerna link",
     "ls": "lerna ls",
