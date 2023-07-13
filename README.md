@@ -4,6 +4,8 @@
 
 > authorization adapter for loopback 4
 
+![](assets/lb4-authorization.png)
+
 Please ★ this repo if you found it useful ★ ★ ★
 
 ## Features
